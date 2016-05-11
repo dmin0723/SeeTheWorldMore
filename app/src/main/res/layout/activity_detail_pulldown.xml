@@ -7,7 +7,7 @@
     android:amimateLayoutChange="true"
     android:background="@color/transparent">
 
-    <!-- PullBackLayout 可以下拉退出一个activity的布局控件 第三方-->
+    <!-- PullBackLayout 下拉退出一个activity的布局控件 第三方-->
     <ooo.oxo.library.widget.PullBackLayout
         android:id="@+id/container"
         android:layout_width="match_parent"

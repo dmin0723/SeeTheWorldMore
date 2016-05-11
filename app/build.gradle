@@ -21,7 +21,7 @@ android {
 
 repositories {
     // ...
-    maven { url "https://jitpack.io" }
+    maven { url "https://jitpack.io" }//PullBackLayout 下拉退出一个activity的布局控件
 }
 
 dependencies {
@@ -29,5 +29,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
-    compile 'com.github.oxoooo:pull-back-layout:1.0.1'
+    compile 'com.github.oxoooo:pull-back-layout:1.0.1'//PullBackLayout 下拉退出一个activity的布局控件
+    compile 'com.github.moduth:blockcanary-android:1.2.1'//UI线程阻塞监控工具----BlockCanary
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'//内存泄露自动探测神器
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'//内存泄露自动探测神器
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'//内存泄露自动探测神器
 }
