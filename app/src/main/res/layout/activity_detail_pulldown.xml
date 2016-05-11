@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- animateLayoutChanges 调用的一个预加载动画效果 -->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:amimateLayoutChange="true"
+    android:background="@color/transparent">
+
+    <!-- PullBackLayout 可以下拉退出一个activity的布局控件 第三方-->
+    <ooo.oxo.library.widget.PullBackLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </ooo.oxo.library.widget.PullBackLayout>
+
+</FrameLayout>

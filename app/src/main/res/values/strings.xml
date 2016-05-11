@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">SeeTheWorldMore</string>
 
+    <!-- 自定义的 -->
+    <string name="appbar_scrolling_view_behavior" translatable="false">
+        android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="shared_img" translatable="false">shared_img</string>
+
+
     <!-- about me -->
     <string name="version">版本</string>
     <string name="tips">提示</string>
