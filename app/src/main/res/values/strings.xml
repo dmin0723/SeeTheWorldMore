@@ -2,6 +2,7 @@
     <string name="app_name">SeeTheWorldMore</string>
 
     <string name="share_to">分享到</string>
+    <string name="loading">努力加载中…</string>
 
     <!-- 自定义的 -->
     <string name="appbar_scrolling_view_behavior" translatable="false">
