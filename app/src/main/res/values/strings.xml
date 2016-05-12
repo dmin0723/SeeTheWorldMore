@@ -3,6 +3,7 @@
 
     <string name="share_to">分享到</string>
     <string name="loading">努力加载中…</string>
+    <string name="hot">今日头条</string>
 
     <!-- 自定义的 -->
     <string name="appbar_scrolling_view_behavior" translatable="false">

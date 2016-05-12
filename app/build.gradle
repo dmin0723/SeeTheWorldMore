@@ -34,6 +34,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
     compile 'io.realm:realm-android:0.87.4'//缓存数据
     compile 'com.jakewharton:butterknife:7.0.1'//黄油刀
     compile 'com.zhy:okhttputils:2.2.0'//网络
