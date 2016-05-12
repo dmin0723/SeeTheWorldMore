@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">SeeTheWorldMore</string>
 
+    <string name="share_to">分享到</string>
+
     <!-- 自定义的 -->
     <string name="appbar_scrolling_view_behavior" translatable="false">
         android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
@@ -15,5 +17,8 @@
     <string name="about_me_content">一个热爱Google和Android的开发者,
         如果你有好的idea或建议，发送邮件跟我交流!</string>
     <string name="my_email">gedengmin@126.com</string>
+
+    <string name="email_not_install">您的手机没有安装邮件APP</string>
+
 
 </resources>

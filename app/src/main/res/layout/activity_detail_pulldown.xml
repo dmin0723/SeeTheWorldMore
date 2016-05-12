@@ -4,9 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:amimateLayoutChange="true"
-    android:background="@color/transparent">
 
+    android:background="@color/transparent">
+    <!-- android:amimateLayoutChange="true" 以上不存在-->
     <!-- PullBackLayout 下拉退出一个activity的布局控件 第三方-->
     <ooo.oxo.library.widget.PullBackLayout
         android:id="@+id/container"

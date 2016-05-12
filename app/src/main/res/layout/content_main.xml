@@ -5,5 +5,5 @@
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layou_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 </FrameLayout>
