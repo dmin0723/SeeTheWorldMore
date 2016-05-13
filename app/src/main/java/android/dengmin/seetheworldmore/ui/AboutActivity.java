@@ -25,7 +25,7 @@ public class AboutActivity extends BaseActivity{
     @Override
     protected void initViews() {
         super.initViews();
-        versionName.append("" + BuildConfig.VERSION_NAME);
+        versionName.append(" " + BuildConfig.VERSION_NAME);//""原来没有空格，出现编译错误，但不报这里
     }
 
     @Override

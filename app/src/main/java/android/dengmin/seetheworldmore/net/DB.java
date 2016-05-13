@@ -1,11 +1,12 @@
 package android.dengmin.seetheworldmore.net;
 
+import android.dengmin.seetheworldmore.utils.Constants;
+
 import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.Sort;
-import io.realm.processor.ClassMetaData;
-import io.realm.processor.Constants;
+
 
 /**
  * Created by dmin on 2016/5/13.
