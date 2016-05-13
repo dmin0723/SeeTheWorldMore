@@ -6,8 +6,7 @@
     <string name="hot">今日头条</string>
 
     <!-- 自定义的 -->
-    <string name="appbar_scrolling_view_behavior" translatable="false">
-        android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+
     <string name="shared_img" translatable="false">shared_img</string>
     <string name="shared_title" translatable="false">shared_title</string>
 
