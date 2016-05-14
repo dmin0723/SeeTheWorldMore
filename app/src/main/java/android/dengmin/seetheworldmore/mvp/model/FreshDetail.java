@@ -4,6 +4,7 @@ import io.realm.RealmObject;
 
 /**
  * Created by dmin on 2016/5/13.
+ * Fresh detail post.
  */
 public class FreshDetail extends RealmObject {
 

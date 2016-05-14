@@ -39,7 +39,7 @@ public class ZhihuModel implements NewsModel<ZhihuStory,ZhihuDetail>{
     private String date;
     private long lastGetTime;
     private int type;
-    private Realm realm;
+    private Realm realm;//不加final后，不一定要有构造函数
 
     public ZhihuModel(BaseActivity activity){
         mActivity = activity;

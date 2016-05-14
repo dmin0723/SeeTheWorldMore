@@ -2,6 +2,8 @@ package android.dengmin.seetheworldmore.net;
 
 import android.dengmin.seetheworldmore.utils.Constants;
 
+import java.util.List;
+
 import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
@@ -17,6 +19,23 @@ public class DB {
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(realmObject);
         realm.commitTransaction();
+    }
+
+    public static <T extends RealmObject> void saveList(Realm realm, List<T> realmObjects){
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(realmObjects);
+        realm.commitTransaction();
+    }
+
+    public static void save(Realm realm,RealmObject realmObject){
+        realm.beginTransaction();
+        realm.copyToRealm(realmObject);
+        realm.commitTransaction();
+    }
+
+    public static <T extends RealmObject> T getById(Realm realm,int id,Class<T> realmObjectClass){
+        return realm.where(realmObjectClass).equalTo("id",id).findFirst();
+
     }
 
     public static <T extends RealmObject> RealmResults<T> findAll(Realm realm, Class<T> realmObjectClass){

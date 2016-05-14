@@ -8,6 +8,7 @@ import io.realm.RealmObject;
  */
 public class FreshCustomFields extends RealmObject {
     //RealmString support List<String>
+
     private RealmList<RealmString> thumb_c;
 
     public RealmList<RealmString> getThumb_c() {
