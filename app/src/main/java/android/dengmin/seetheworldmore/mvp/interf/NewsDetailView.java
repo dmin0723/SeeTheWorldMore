@@ -8,7 +8,7 @@ import android.dengmin.seetheworldmore.mvp.other.NewsDetail;
  */
 public interface NewsDetailView <T extends NewsDetail>{
     void showProgress();
-    void showDrtail(T detailNews);
+    void showDetail(T detailNews);
     void hideProgress();
     void showLoadFailed(String msg);
 }

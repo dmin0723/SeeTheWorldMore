@@ -4,36 +4,36 @@ import android.dengmin.seetheworldmore.mvp.interf.NewsModel;
 import android.dengmin.seetheworldmore.mvp.interf.NewsPresenter;
 import android.dengmin.seetheworldmore.mvp.interf.NewsView;
 import android.dengmin.seetheworldmore.mvp.interf.OnLoadDataListener;
-import android.dengmin.seetheworldmore.mvp.model.FreshDetailJson;
-import android.dengmin.seetheworldmore.mvp.model.FreshJson;
-import android.dengmin.seetheworldmore.mvp.model.FreshModel;
-import android.dengmin.seetheworldmore.mvp.model.FreshPost;
+import android.dengmin.seetheworldmore.mvp.model.ZhihuDetail;
+import android.dengmin.seetheworldmore.mvp.model.ZhihuJson;
+import android.dengmin.seetheworldmore.mvp.model.ZhihuModel;
+import android.dengmin.seetheworldmore.mvp.model.ZhihuStory;
+import android.dengmin.seetheworldmore.net.API;
 import android.dengmin.seetheworldmore.ui.BaseActivity;
 
 /**
- * Created by dmin on 20165/12.
- * helps to present fresh news list
+ * Created by dmin on 2016/5/14.
+ * helps to present zhihu news list
  */
-public class FreshDataPresenter implements NewsPresenter,OnLoadDataListener {
+public class ZhihuDataPresenter implements NewsPresenter,OnLoadDataListener {
 
-    private NewsView<FreshJson> mNewsView;
-    private NewsModel<FreshPost,FreshDetailJson> mNewsModel;
+    private NewsView<ZhihuJson> mNewsView;
+    private NewsModel<ZhihuStory,ZhihuDetail> mNewsModel;
 
-    public FreshDataPresenter(NewsView<FreshJson> newsView, BaseActivity activity){
+    public ZhihuDataPresenter(NewsView<ZhihuJson> newsView, BaseActivity activity){
         this.mNewsView = newsView;
-        mNewsModel = new FreshModel(activity);
+        mNewsModel = new ZhihuModel(activity);
     }
 
     @Override
     public void loadNews() {
         mNewsView.showProgress();
-        mNewsModel.getNews(FreshModel.TYPE_FRESH,this);
+        mNewsModel.getNews(API.TYPE_LATEST,this);
     }
 
     @Override
     public void loadBefore() {
-        mNewsView.showProgress();
-        mNewsModel.getNews(FreshModel.TYPE_CONTINUOUS,this);
+        mNewsModel.getNews(API.TYPE_BEFORE,this);
     }
 
     @Override

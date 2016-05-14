@@ -1,5 +1,6 @@
 package android.dengmin.seetheworldmore.mvp.model;
 
+import android.dengmin.seetheworldmore.mvp.interf.NewsView;
 import android.dengmin.seetheworldmore.mvp.other.NewsItem;
 
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import io.realm.annotations.PrimaryKey;
  * Created by dmin on 2016/5/13.
  * fresh things item in list
  */
-public class FreshPost extends RealmObject implements NewsItem {
+public class FreshPost extends RealmObject implements NewsItem, NewsView {
     private int id;
     private String url;
     private String title;

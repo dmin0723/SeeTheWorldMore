@@ -1,5 +1,6 @@
 package android.dengmin.seetheworldmore.mvp.model;
 
+import android.dengmin.seetheworldmore.mvp.interf.NewsView;
 import android.dengmin.seetheworldmore.mvp.other.NewsItem;
 
 import io.realm.RealmList;
@@ -10,7 +11,7 @@ import io.realm.annotations.PrimaryKey;
  * Created by dmin on 2016/5/13.
  * Zhihu news item in list
  */
-public class ZhihuStory extends RealmObject implements NewsItem {
+public class ZhihuStory extends RealmObject implements NewsItem, NewsView {
     /**
      * images : ["http://pic1.zhimg.com/aef18b16a9a6dcb445d5c235784c25a8.jpg"]
      * type : 0
