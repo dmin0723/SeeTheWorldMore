@@ -5,9 +5,10 @@ package android.dengmin.seetheworldmore.net;
  */
 public class API {
 
-    //request type,
-//    public static final int TYPE_LATEST = 0;
-//    public static final int TYPE_BeFORE = 1;
+    //request type,latest stands for getting newly information.
+    //在ZhihuModel中使用
+    public static final int TYPE_LATEST = 0;
+    public static final int TYPE_BEFORE = 1;
 
     //request tag
     public static final Object TAG_ZHIHU = "zhihu";//why Object?

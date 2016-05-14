@@ -13,6 +13,12 @@ import io.realm.Sort;
  */
 public class DB {
 
+    public static void saveORUpdate(Realm realm,RealmObject realmObject){
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(realmObject);
+        realm.commitTransaction();
+    }
+
     public static <T extends RealmObject> RealmResults<T> findAll(Realm realm, Class<T> realmObjectClass){
         return realm.where(realmObjectClass).findAll();
     }

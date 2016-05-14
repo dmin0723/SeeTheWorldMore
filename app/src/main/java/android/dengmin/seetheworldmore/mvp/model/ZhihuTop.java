@@ -4,6 +4,7 @@ import io.realm.RealmObject;
 
 /**
  * Created by dmin on 2016/5/13.
+ * Zhihu news item in top banner
  */
 public class ZhihuTop extends RealmObject {
     //image id title

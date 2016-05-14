@@ -9,5 +9,5 @@ import android.dengmin.seetheworldmore.mvp.other.NewsItem;
  */
 public interface NewsModel<T extends NewsItem,D extends NewsDetail> {
     void getNews(int type,OnLoadDataListener listener);
-    void getNewsDetail(T newsItem,OnLoadDataListener<D> listener);
+    void getNewsDetail(T newsItem,OnLoadDetailListener<D> listener);
 }
