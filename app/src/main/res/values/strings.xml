@@ -5,6 +5,7 @@
     <string name="loading">努力加载中…</string>
     <string name="hot">今日头条</string>
 
+    <string name="load_fail">网络被外星人切断，稍后再试吧</string>
     <!-- 自定义的 -->
 
     <string name="shared_img" translatable="false">shared_img</string>
