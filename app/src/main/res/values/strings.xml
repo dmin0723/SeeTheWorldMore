@@ -19,8 +19,17 @@
     <string name="about_me_content">一个热爱Google和Android的开发者,
         如果你有好的idea或建议，发送邮件跟我交流!</string>
     <string name="my_email">gedengmin@126.com</string>
-
     <string name="email_not_install">您的手机没有安装邮件APP</string>
 
+    <!-- picture -->
+    <string name="gank" translatable="false">Gank</string>
+    <string name="db_breast">波涛胸涌</string>
+    <string name="db_butt">悬崖翘臂</string>
+    <string name="db_silk">黑丝控</string>
+    <string name="db_leg">美腿</string>
+    <string name="db_rank">热门</string>
 
+    <!-- news -->
+    <string name="zhihu_news" >知乎日报</string>
+    <string name="fresh_news">新鲜事</string>
 </resources>
