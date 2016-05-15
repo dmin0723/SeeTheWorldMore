@@ -26,8 +26,8 @@ import butterknife.Bind;
 public class TabFragment extends BaseFragment {
 
     private static final int SMOOTHSCROLL_TOP_POSITION = 50;
-    private static final int TYPE_ZHIHU = 1024;
-    private static final int TYPE_FRESH = 1025;
+    public static final int TYPE_ZHIHU = 1024;
+    public static final int TYPE_FRESH = 1025;
 
     @Bind(R.id.tabs)
     TabLayout tabs;
