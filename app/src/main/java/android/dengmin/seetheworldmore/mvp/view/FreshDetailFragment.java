@@ -1,17 +1,35 @@
 package android.dengmin.seetheworldmore.mvp.view;
 
+import android.annotation.TargetApi;
 import android.dengmin.seetheworldmore.R;
 import android.dengmin.seetheworldmore.mvp.interf.NewsDetailPresenter;
 import android.dengmin.seetheworldmore.mvp.interf.NewsDetailView;
 import android.dengmin.seetheworldmore.mvp.model.FreshDetailJson;
 import android.dengmin.seetheworldmore.mvp.model.FreshPost;
+import android.dengmin.seetheworldmore.mvp.presenter.FreshDetailPresenter;
+import android.dengmin.seetheworldmore.net.DB;
+import android.dengmin.seetheworldmore.ui.BaseActivity;
 import android.dengmin.seetheworldmore.ui.BaseFragment;
 import android.dengmin.seetheworldmore.utils.Constants;
+import android.dengmin.seetheworldmore.utils.Share;
+import android.dengmin.seetheworldmore.utils.UI;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ShareActionProvider;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import android.widget.Toolbar;
 
 import java.util.List;
 
@@ -28,7 +46,7 @@ public class FreshDetailFragment extends BaseFragment implements NewsDetailView<
     @Bind(R.id.progress)
     ProgressBar progress;
     @Bind(R.id.web_container)
-    Fragment webContainer;
+    FrameLayout webContainer;
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
@@ -36,7 +54,9 @@ public class FreshDetailFragment extends BaseFragment implements NewsDetailView<
     private WebView webView;
     private FreshPost freshPost;
     private NewsDetailPresenter<FreshPost> presenter;
-
+    private ShareActionProvider mShareActionProvider;
+    private int position;
+    private BaseActivity context;
 
     public  FreshDetailFragment(){
     }
@@ -50,37 +70,122 @@ public class FreshDetailFragment extends BaseFragment implements NewsDetailView<
    }
 
     @Override
-    protected void initData() {
-
-    }
-
-    @Override
-    protected void initViews() {
-        layoutId = R.layout.fragment_fresh_detail;
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        context = (BaseActivity) getActivity();
+        setHasOptionsMenu(true);
     }
 
     @Override
     protected void initLayoutId() {
+        layoutId = R.layout.fragment_fresh_detail;
+    }
 
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    protected void initData() {
+        if(getArguments() != null){
+            position = getArguments().getInt(Constants.POSITION);
+            freshPosts = DB.findAllDateSorted(context.mRealm, FreshPost.class);
+            freshPost = freshPosts.get(position);
+        }
+        presenter.loadNewsDetail(freshPost);
+        toolbar.setTitle(freshPost.getTitle());
+        final AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);//出现问题，使用错的import
     }
 
     @Override
-    public void showProgress() {
+    protected void AlwaysInit() {
+        super.AlwaysInit();
+        initWebView();
+    }
 
+    private void initWebView() {
+        webView = new WebView(getActivity());
+        webContainer.addView(webView);
+        webView.setVisibility(View.INVISIBLE);
+
+        WebSettings setting = webView.getSettings();
+        setting.setTextZoom(110);
+        setting.setJavaScriptEnabled(true);
+        setting.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        setting.setAppCacheEnabled(true);
+        setting.setDomStorageEnabled(true);
+
+        webView.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public void onProgressChanged(final WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+                if(newProgress == 100){
+                    view.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            view.setVisibility(View.VISIBLE);
+                            hideProgress();
+                        }
+                    },200);
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void initViews() {
+        presenter = new FreshDetailPresenter(this,context);
+    }
+
+
+    @Override
+    public void showProgress() {
+        progress.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showDetail(FreshDetailJson detailNews) {
-
+        webView.loadDataWithBaseURL("x-data://base",
+                detailNews.getPost().getContent(),"text/html","UTF-8",null);
     }
 
     @Override
     public void hideProgress() {
-
+        if(progress != null){
+            progress.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void showLoadFailed(String msg) {
+        if(rootView != null){
+            UI.showSnack(rootView,R.string.load_fail);
+        }
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        webView.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        webView.onResume();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        getActivity().getMenuInflater().inflate(R.menu.share_menu,menu);
+        MenuItem item = menu.findItem(R.id.menu_item_share);
+        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+        setShareIntetn();
+    }
+
+    private void setShareIntetn() {
+        if(mShareActionProvider != null){
+            mShareActionProvider.setShareIntent(
+                    Share.getShareIntent(freshPost.getUrl()));
+        }
     }
 }
