@@ -1,14 +1,19 @@
 package android.dengmin.seetheworldmore.mvp.view;
 
+import android.content.Intent;
+import android.dengmin.seetheworldmore.MainActivity;
+import android.dengmin.seetheworldmore.R;
 import android.dengmin.seetheworldmore.mvp.interf.NewsPresenter;
 import android.dengmin.seetheworldmore.mvp.interf.NewsView;
 import android.dengmin.seetheworldmore.mvp.interf.OnListFragmentInteract;
 import android.dengmin.seetheworldmore.mvp.model.FreshJson;
 import android.dengmin.seetheworldmore.mvp.other.FreshListAdapter;
+import android.dengmin.seetheworldmore.mvp.other.ZhihuListAdapter;
 import android.dengmin.seetheworldmore.mvp.presenter.FreshDataPresenter;
 import android.dengmin.seetheworldmore.ui.BaseActivity;
 import android.dengmin.seetheworldmore.utils.Constants;
 import android.dengmin.seetheworldmore.utils.SharedPreferencesUtil;
+import android.dengmin.seetheworldmore.utils.UI;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -78,7 +83,7 @@ public class FreshFragment extends RecyclerFragment implements
 
     @Override
     public void addNews(FreshJson news) {
-
+        adapter.addNews();
     }
 
     @Override
@@ -88,12 +93,22 @@ public class FreshFragment extends RecyclerFragment implements
 
     @Override
     public void loadFailed(String msg) {
-
+        if(isAlive()){
+            UI.showSnack(((MainActivity)getActivity()).
+                    getDrawerLayout(), R.string.load_fail);
+        }
     }
 
     @Override
-    public void OnListFragmentInteraction(RecyclerView.ViewHolder holder) {
-
+    public void OnListFragmentInteraction(RecyclerView.ViewHolder viewHolder) {
+        if(viewHolder instanceof FreshListAdapter.ViewHolder){
+            FreshListAdapter.ViewHolder holder = (FreshListAdapter.ViewHolder) viewHolder;
+            holder.mTitle.setTextColor(ZhihuListAdapter.textGrey);
+            Intent intent = new Intent(getActivity(),DetailActivity.class);
+            intent.putExtra(Constants.MENU_TYPE,TabFragment.MENU_NEWS);
+            intent.putExtra(Constants.POSITION,holder.getAdapterPosition());
+            startActivity(intent);
+        }
     }
 
     @Override
