@@ -1,5 +1,6 @@
 package android.dengmin.seetheworldmore.net;
 
+import android.dengmin.seetheworldmore.mvp.model.Image;
 import android.dengmin.seetheworldmore.utils.Constants;
 
 import java.util.List;
@@ -46,5 +47,11 @@ public class DB {
         RealmResults<T> results = findAll(realm,realmObjectClass);
         results.sort(Constants.DATE, Sort.DESCENDING);
         return results;
+    }
+
+    public static RealmResults<Image> getImages(Realm realm,int type){
+        RealmResults<Image> results = realm.where(Image.class).equalTo("type",type).findAll();
+        results.sort("publishedAt",Sort.DESCENDING);
+        return  results;
     }
 }

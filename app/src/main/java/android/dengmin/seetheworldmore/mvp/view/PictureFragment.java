@@ -6,6 +6,7 @@ import android.dengmin.seetheworldmore.mvp.model.Image;
 import android.dengmin.seetheworldmore.mvp.other.PictureAdapter;
 import android.dengmin.seetheworldmore.mvp.presenter.FetchService;
 import android.dengmin.seetheworldmore.net.API;
+import android.dengmin.seetheworldmore.net.DB;
 import android.dengmin.seetheworldmore.net.Net;
 import android.dengmin.seetheworldmore.ui.BaseActivity;
 import android.os.Bundle;
@@ -126,23 +127,44 @@ public class PictureFragment extends RecyclerFragment implements OnLoadDataListe
 //        return fragment;
 //    }
 
+
+    @Override
+    protected void AlwaysInit() {
+        super.AlwaysInit();
+    }
+
     @Override
     protected void initData() {
-
+       images = DB.getImages(context.mRealm,type);
+        if(images.isEmpty()){
+            swipeRefresh.post(new Runnable() {
+                @Override
+                public void run() {
+                    showProgress(true);
+                }
+            });
+            fetch(true);
+            return;
+        }
+        adapter.addAll(images);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onSuccess() {
-
+        showProgress(false);
+        adapter.replaceWith(images);
+        page++;
     }
 
     @Override
     public void onFailure(String msg) {
-
+        showProgress(false);
+        fetch(false);
     }
 
     @Override
     public void onRefresh() {
-
+        fetch(true);
     }
 }
