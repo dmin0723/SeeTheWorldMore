@@ -1,11 +1,17 @@
 <resources>
     <string name="app_name">SeeTheWorldMore</string>
 
+    <string name="navigation_drawer_open" translatable="false">close drawer</string>
+    <string name="navigation_drawer_close" translatable="false">open drawer</string>
+
     <string name="share_to">分享到</string>
     <string name="loading">努力加载中…</string>
     <string name="hot">今日头条</string>
     <string name="menu_share">分享</string>
 
+    <!-- Main activity -->
+    <string name="leave_app">真的要离开人家了吗？</string>
+    <string name="share_app_description">这个Android项目很不错 https://github.com/dmin0723/SeeTheWorldMore</string>
 
     <string name="action_about">关于</string>
     <string name="nav_knowledge">知识</string>

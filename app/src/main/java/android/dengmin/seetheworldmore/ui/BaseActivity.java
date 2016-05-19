@@ -55,9 +55,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    //切换一个具体内容的fragment视图
     public void replaceFragment(Fragment fragment, String tag){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_main,fragment,tag);
+        transaction.replace(R.id.content_main,fragment,tag);//具体到内容布局了
         transaction.commit();
     }
 

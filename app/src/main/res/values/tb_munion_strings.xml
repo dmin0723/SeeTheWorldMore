@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!-- standalone="no"的作用？ -->
+<!-- standalone="no"的作用？
+standalone  用来表示该文件是否
+呼叫其它外部的文件。若值是 ”yes” 表示没有呼叫外部文件，
+若值是 ”no” 则表示有呼叫外部文件。默认值是 “yes”。
+ 这里所指的外部文件其实就是查检XML是不是有效的约束文件，
+ 或是DTD或是Schema-->
 <resources>
     <color name="tb_munion_item_force">#e3e3e3</color>
 </resources>

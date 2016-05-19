@@ -10,7 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 /**
  * Created by dmin on 2016/5/13.
- * 图片下载的封装
+ * 图片下载的封装 使用了glide加载图片
  */
 public class Imager {
 
@@ -22,6 +22,7 @@ public class Imager {
                 .into(view);
     }
 
+    //main activity中引用 用来加载navigation的header图片
     public static void load(Context context,int resourceId,ImageView view){
         Glide.with(context)
                 .load(resourceId)
