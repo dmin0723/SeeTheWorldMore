@@ -41,4 +41,15 @@
     <!-- news -->
     <string name="zhihu_news" >知乎日报</string>
     <string name="fresh_news">新鲜事</string>
+
+    <!-- setting -->
+    <string name="set_clear_cache">清除缓存</string>
+    <string name="set_current_cache">当前缓存为</string>
+    <string name="set_check_version">检查更新</string>
+    <string name="set_feedback">应用反馈</string>
+    <string name="set_post_feedback">提建议或反馈</string>
+    <string name="original_splash">原始启动图</string>
+    <string name="set_original_splash">使用原始启动图而不是从网络获取</string>
+
+
 </resources>
