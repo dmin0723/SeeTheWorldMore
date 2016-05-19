@@ -9,6 +9,9 @@
     <string name="hot">今日头条</string>
     <string name="menu_share">分享</string>
 
+    <string name="activity_news_detail">知乎日报详情</string>
+    <string name="activity_detail">详情页</string>
+
     <!-- Main activity -->
     <string name="leave_app">真的要离开人家了吗？</string>
     <string name="share_app_description">这个Android项目很不错 https://github.com/dmin0723/SeeTheWorldMore</string>
